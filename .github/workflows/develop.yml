@@ -10,7 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Zip output
-      run: zip -r ./output/release.zip . -x ".git/*" ".github/*"
+      run:  |
+        mkdir output
+        zip -r ./output/release.zip . -x ".git/*" ".github/*"
     - name: Create release
       id: create_release
       uses: actions/create-release@v1.0.0
