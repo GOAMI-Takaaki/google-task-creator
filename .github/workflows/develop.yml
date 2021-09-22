@@ -9,28 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Zip output
-      run:  |
-        mkdir output
-        zip -r ./output/release.zip . -x ".git/*" ".github/*"
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Zip files
+      uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
       with:
-        tag_name: google-task-creator-SNAPSHOT
-        release_name: Release SNAPSHOT
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        extensionDir: .
+        zipFilePath: build/google-task-creator.zip
+        zipIgnore : .git*|*.md
+    - name: Convert to crx file
+      uses: cardinalby/webext-buildtools-chrome-crx-action@v2
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./output/release.zip
-        asset_name: google-task-creator-SNAPSHOT.zip
-        asset_content_type: application/zip      
-      
+        zipFilePath: build/google-task-creator.zip
+        crxFilePath: build/google-task-creator.crx
+        privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }},
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: google-task-creator.crx
+        path: build/google-task-creator.crx
