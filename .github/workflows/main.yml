@@ -14,38 +14,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Zip files 
-        uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
-        with:
-          extensionDir: .
-          zipFilePath: build/google-task-creator.zip
-          zipIgnore : .git*|*.md
-      - name: Convert to crx file
-        uses: cardinalby/webext-buildtools-chrome-crx-action@v2
-        with:
-          zipFilePath: build/google-task-creator.zip
-          crxFilePath: build/google-task-creator.crx
-          privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }},
-      - name: Upload release zip
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/google-task-creator.zip
-          asset_name: google-task-creator.zip
-          asset_content_type: application/zip
-      - name: Upload release crx
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/google-task-creator.crx
-          asset_name: google-task-creator.crx
-          asset_content_type: application/crx
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
@@ -56,3 +24,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+      - name: Zip files 
+        uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+        with:
+          extensionDir: .
+          zipFilePath: build/google-task-creator.zip
+          zipIgnore : .git*|*.md
+      - name: Upload release zip
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/google-task-creator.zip
+          asset_name: google-task-creator.zip
+          asset_content_type: application/zip
