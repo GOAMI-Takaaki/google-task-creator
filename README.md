@@ -20,6 +20,10 @@ This is a Chrome extension supports to create a task of Google Todo List.
 1. Change something
 1. Update the extension on the browser
 
+### Publish
+
+1. Access [Chrome Web Store](https://chrome.google.com/webstore/devconsole)
+
 ## Usage
 
 - Create a task by clicking extension button on browser
