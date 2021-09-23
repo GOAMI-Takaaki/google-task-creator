@@ -9,20 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Zip files
-      uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
-      with:
-        extensionDir: .
-        zipFilePath: build/google-task-creator.zip
-        zipIgnore : .git*|*.md
-    - name: Convert to crx file
-      uses: cardinalby/webext-buildtools-chrome-crx-action@v2
-      with:
-        zipFilePath: build/google-task-creator.zip
-        crxFilePath: build/google-task-creator.crx
-        privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }},
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: google-task-creator.crx
-        path: build/google-task-creator.crx
+        name: google-task-creator
+        path: |
+          .
+          !*.md
+          !.git*
