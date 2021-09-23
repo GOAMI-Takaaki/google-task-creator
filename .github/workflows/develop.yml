@@ -1,29 +1,10 @@
 name: Develop
 on:
+  pull: 
+    branches: [ develop ]
   pull_request:
-    types: [closed]
-    branches: [ add-ci-develop ]
+    branches: [ develop ]
 jobs:
-  create-release-pr:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Version
-        id: vars
-        run: |
-          echo "::set-output name=VERSION::$(<VERSION)"
-      - name: Creates a release pull request
-        env:
-          GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_PR_RELEASE_BRANCH_PRODUCTION: add-ci
-          GIT_PR_RELEASE_BRANCH_STAGING: add-ci-develop
-          GIT_PR_RELEASE_LABELS: release
-          GIT_PR_RELEASE_TITLE: "v${{ steps.vars.outputs.VERSION }}"
-        run: |
-          gem install -N git-pr-release -v "1.2.0"
-          git-pr-release --no-fetch
   build:
     runs-on: ubuntu-latest
     steps:
