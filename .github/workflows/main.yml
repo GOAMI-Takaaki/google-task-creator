@@ -3,7 +3,7 @@ name: Release
 on:
   pull_request:
     types: [closed]
-    branches: [ add-ci ]
+    branches: [ main ]
 jobs:
   release:
     name: Release
