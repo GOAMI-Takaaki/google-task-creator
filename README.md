@@ -30,11 +30,16 @@ See [Issues](https://github.com/GOAMI-Takaaki/google-task-creator/issues) of thi
 1. Turn on developer mode
 1. Load unpacked extension and choose the downloaded directory on a dialog
 
-## Contributing
+## Contribute
 
 1. Fork this repository to your account
 1. Change something and test them.
-1. Send pull requests to Code Owner
+1. Send pull requests
+
+## Publish
+
+1. Operate at [Chrome Web Store - Developer DashBoard](https://chrome.google.com/webstore/devconsole)
+    - This will be replaced by GitHub Action
 
 ## License
 
