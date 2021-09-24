@@ -1,0 +1,19 @@
+name: Develop
+on:
+  push: 
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: google-task-creator
+        path: |
+          .
+          !*.md
+          !.git*
