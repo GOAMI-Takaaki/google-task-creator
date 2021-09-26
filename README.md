@@ -33,7 +33,11 @@ Language: JP [EN](README_EN.md)
 1. デベロッパーモードをオンにします
 1. 「パッケージ化されていない拡張機能を読み込む」でダイアログを開き、フォルダを選択します
 
-## 開発
+## リリース
+
+1. [Developer DashBoard](https://chrome.google.com/webstore/devconsole)で最新をアップロードする
+
+## 貢献
 
 1. このレポジトリを自分のアカウントにフォークします
 1. レポジトリをクローンします
