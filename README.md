@@ -1,45 +1,49 @@
 # google-task-creator
 
-This is a Chrome extension supports to create a task of Google Todo List. For use only, it will be able to get from [Chrome Web Store](https://chrome.google.com/webstore).
+Language: JP [EN](README_EN.md)
 
-## Features
+このツールはGoogle Todo Listのタスクを作成するChromeの拡張機能です。[Chrome Web Store](https://chrome.google.com/webstore)で利用できるよう申請中です。
 
-### Create a task by clicking extension button on browser
+## 機能
+
+### 見ているページのタスクを作成できます
 
 ![Screen](./screen/screen01.png)
 
-### Create a task by context menu on links
+### ページ内のリンクのタスクを作成できます
 
-## Roadmap
+## 今後の予定
 
-See [Issues](https://github.com/GOAMI-Takaaki/google-task-creator/issues) of this repositry.
+[Issues](https://github.com/GOAMI-Takaaki/google-task-creator/issues) で確認する事ができます。
 
-## Get Started
+## 始めるには
 
-### Prerequisites
+### 前提条件
 
 - Google Chrome
 
-### Prepare
+### 準備
 
-1. Download this repository to the local
+1. [リリース](https://github.com/GOAMI-Takaaki/google-task-creator/releases)から最新をダウンロードします
+1. ダウンロードしたファイルを任意のフォルダに解凍します
 
-### Deploy
+### インストール
 
-1. Open [Chrome Extension](chrome://extensions/) page
-1. Turn on developer mode
-1. Load unpacked extension and choose the downloaded directory on a dialog
+1. Chromeで[拡張機能](chrome://extensions/) ページを開きます
+1. デベロッパーモードをオンにします
+1. 「パッケージ化されていない拡張機能を読み込む」でダイアログを開き、フォルダを選択します
 
-## Contributing
+## 開発
 
-1. Fork this repository to your account
-1. Change something and test them.
-1. Send pull requests to Code Owner
+1. このレポジトリを自分のアカウントにフォークします
+1. レポジトリをクローンします
+1. 何かしら変更を行い、テストをします
+1. プルリクエストを送ります
 
-## License
+## ライセンス
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+このツールはMIT Licenseです。詳しくは [LICENSE](LICENSE)を確認してください。
 
-## Contact
+## 連絡
 
-Basically, contact me at [Discussion](https://github.com/GOAMI-Takaaki/google-task-creator/discussions) of this repository.
+[Discussion](https://github.com/GOAMI-Takaaki/google-task-creator/discussions) を使ってください。
