@@ -1,5 +1,5 @@
 function operate(elementSelector, retryCount, doOperation) {
-    if (retryCount <= 0) return
+    if (retryCount <= 0) return;
     
     const element = document.querySelector(elementSelector);
     if (element) {
@@ -8,15 +8,36 @@ function operate(elementSelector, retryCount, doOperation) {
     }
     setTimeout(() => {
         operate(elementSelector, retryCount - 1, doOperation);
-    }, 1000);
+    }, 100);
 }
 
-const OPERATION_RETRY = 60;
+const OPERATION_RETRY = 600;
 function createTask(title, explanation) {
-    operate("button[aria-label='作成']", OPERATION_RETRY, element => {
-        element.click();
+    operate("div[class='dwlvNd']", OPERATION_RETRY, element => {
+        popupDialog(element, () => {
+            setDetail(title, explanation);
+        });
     });
-            
+}
+
+function popupDialog(parent, onPopup) {
+    const newDiv = document.createElement('div');
+    newDiv.setAttribute('jsaction', 'JIbuQc:t0O6ic(vTZnL);');
+    newDiv.setAttribute('style', 'visibility: hidden;');
+    parent.insertBefore(newDiv, undefined);
+        
+    const newButton = document.createElement('button');
+    newButton.setAttribute('jsname', 'vTZnL');
+    newButton.setAttribute('jscontroller', 'soHxf');
+    newButton.setAttribute('jsaction', 'click:cOuCgd;');
+    newDiv.appendChild(newButton);
+
+    newButton.click();
+    onPopup();
+    setTimeout(newDiv.remove, 1000);
+}
+
+function setDetail(title, explanation) {            
     operate("div[aria-controls='tabTask']", OPERATION_RETRY, element => {
         element.click();
     });

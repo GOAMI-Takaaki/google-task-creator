@@ -1,15 +1,30 @@
 const GOOGLE_CALENDAR_WEEK_URL = 'https://calendar.google.com/calendar/u/0/r/week';
 
-function createTask(title, explanation) {
-    chrome.tabs.create({ url: GOOGLE_CALENDAR_WEEK_URL }, tab => {
-        setTimeout( () => {
+function sendMessage(tab, title, explanation, retryCount) {
+    if (retryCount <= 0) return;
+    
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (!tabs[0]) return;
+        const currentTab = tabs[0];
+        if (currentTab.status == 'complete') {
             const options = {
                 action: "createTask",
                 title: title,
                 explanation: explanation
             };
             chrome.tabs.sendMessage(tab.id, options, function (response) {});
-        }, 2000 );
+        } else {
+            setTimeout( () => {
+                sendMessage(tab, title, explanation, retryCount-1);
+            }, 10 );
+        }
+    });
+}
+
+const SEND_RETRY = 1000;
+function createTask(title, explanation) {
+    chrome.tabs.create({ url: GOOGLE_CALENDAR_WEEK_URL }, tab => {
+        sendMessage(tab, title, explanation, SEND_RETRY)
     });
 }
 
